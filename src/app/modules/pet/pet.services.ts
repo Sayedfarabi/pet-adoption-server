@@ -86,7 +86,29 @@ const getPetsFromDB = async (
   };
 };
 
+const updatePetIntoDB = async (
+  id: string,
+  payload: Partial<Pet>,
+  user: JwtPayload
+) => {
+  await prisma.user.findUniqueOrThrow({
+    where: {
+      email: user.email,
+    },
+  });
+
+  const result = await prisma.pet.update({
+    where: {
+      id: id,
+    },
+    data: payload,
+  });
+
+  return result;
+};
+
 export const PetServices = {
   addPetIntoDB,
   getPetsFromDB,
+  updatePetIntoDB,
 };

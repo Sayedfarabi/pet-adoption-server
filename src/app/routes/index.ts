@@ -1,15 +1,17 @@
 import { Router } from "express";
-import { UserRoutes } from "../modules/user/user.routes";
 import { RegisterRoutes } from "../modules/register/register.route";
 import { AuthRoutes } from "../modules/auth/auth.routes";
 import { PetRoutes } from "../modules/pet/pet.routes";
+import { AdoptionRequestRoutes } from "../modules/adoption-request/adoptionRequest.routes";
+import { AdoptionRequestsRoutes } from "../modules/adoption-requests/adoptionRequests.routes";
+import { ProfileRoutes } from "../modules/profile/profile.routes";
 
 const routes = Router();
 
 const moduleRoutes = [
   {
     path: "/profile",
-    route: UserRoutes,
+    route: ProfileRoutes,
   },
   {
     path: "/register",
@@ -22,6 +24,14 @@ const moduleRoutes = [
   {
     path: "/pets",
     route: PetRoutes,
+  },
+  {
+    path: "/adoption-request",
+    route: AdoptionRequestRoutes,
+  },
+  {
+    path: "/adoption-requests",
+    route: AdoptionRequestsRoutes,
   },
 ];
 
