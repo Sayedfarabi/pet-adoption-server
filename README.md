@@ -1,6 +1,6 @@
 <!-- server -->
 
-http://localhost:5000
+https://pet-adoption-server-sooty.vercel.app/api
 
 <!-- client -->
 
@@ -11,25 +11,25 @@ http://localhost:5000
 API ROUTES:
 
 (REGISTERD MANAGEMENT):
-Create User: POST: https://localhost:5000/api/register
+Create User: POST: https://pet-adoption-server-sooty.vercel.app/api/register
 
 (AUTH MODULE):
-Login User: POST: https://localhost:5000/api/login
+Login User: POST: https://pet-adoption-server-sooty.vercel.app/api/login
 
 (PROFILE MODULE):
-Get Profile: GET: https://localhost:5000/api/profile
-Update Profile: PUT: https://localhost:5000/api/profile
+Get Profile: GET: https://pet-adoption-server-sooty.vercel.app/api/profile
+Update Profile: PUT: https://pet-adoption-server-sooty.vercel.app/api/profile
 
 (PET MODULE):
-Create Pet: POST: https://localhost:5000/api/pets
-Get Pet: GET: https://localhost:5000/api/pets
-Update Pet: PUT: https://localhost:5000/api/pets/[petId]
+Create Pet: POST: https://pet-adoption-server-sooty.vercel.app/api/pets
+Get Pet: GET: https://pet-adoption-server-sooty.vercel.app/api/pets
+Update Pet: PUT: https://pet-adoption-server-sooty.vercel.app/api/pets/[petId]
 
 (ADOPTION REQUEST MODULE):
-Create Adoption: POST: https://localhost:5000/api/adoption-request
+Create Adoption: POST: https://pet-adoption-server-sooty.vercel.app/api/adoption-request
 
 (ADOPTION REQUESTS MODULE):
-Get Adoption: GET: https://localhost:5000/api/adoption-requests
-Update Adoption: PUT: https://localhost:5000/api/adoption-requests/[requestId]
+Get Adoption: GET: https://pet-adoption-server-sooty.vercel.app/api/adoption-requests
+Update Adoption: PUT: https://pet-adoption-server-sooty.vercel.app/api/adoption-requests/[requestId]
 
 ---
