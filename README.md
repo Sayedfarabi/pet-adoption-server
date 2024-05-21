@@ -24,6 +24,7 @@ Update Profile: PUT: https://pet-adoption-server-sooty.vercel.app/api/profile
 Create Pet: POST: https://pet-adoption-server-sooty.vercel.app/api/pets
 Get Pet: GET: https://pet-adoption-server-sooty.vercel.app/api/pets
 Update Pet: PUT: https://pet-adoption-server-sooty.vercel.app/api/pets/[petId]
+Delete Pet: DELETE: https://pet-adoption-server-sooty.vercel.app/api/pets/[petId]
 
 (ADOPTION REQUEST MODULE):
 Create Adoption: POST: https://pet-adoption-server-sooty.vercel.app/api/adoption-request

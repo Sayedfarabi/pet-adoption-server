@@ -107,8 +107,28 @@ const updatePetIntoDB = async (
   return result;
 };
 
+const deletePetFromDB = async (id: string, user: JwtPayload) => {
+  await prisma.user.findUniqueOrThrow({
+    where: {
+      email: user.email,
+    },
+  });
+
+  const result = await prisma.pet.update({
+    where: {
+      id: id,
+    },
+    data: {
+      isDeleted: true,
+    },
+  });
+
+  return result;
+};
+
 export const PetServices = {
   addPetIntoDB,
   getPetsFromDB,
   updatePetIntoDB,
+  deletePetFromDB,
 };

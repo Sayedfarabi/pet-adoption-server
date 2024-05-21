@@ -28,6 +28,7 @@ model User {
 model Pet {
   id                   String     @id @default(uuid())
   name                 String
+  type                 String
   species              String
   breed                String
   age                  Int
@@ -37,6 +38,8 @@ model Pet {
   temperament          String
   medicalHistory       String
   adoptionRequirements String
+  photos               String[]
+  isDeleted            Boolean    @default(false)
   createdAt            DateTime   @default(now())
   updatedAt            DateTime   @updatedAt
   adoption             Adoption[]
