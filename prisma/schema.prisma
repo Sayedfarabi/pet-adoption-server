@@ -18,6 +18,8 @@ model User {
   name      String
   email     String     @unique
   password  String
+  role      UserRole
+  status    UserStatus @default(ACTIVATE)
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
   adoption  Adoption[]
@@ -26,22 +28,23 @@ model User {
 }
 
 model Pet {
-  id                   String     @id @default(uuid())
+  id                   String       @id @default(uuid())
   name                 String
-  type                 String
   species              String
   breed                String
   age                  Int
+  gender               Gender
   size                 String
-  location             String
+  current_location     String
   description          String
   temperament          String
   medicalHistory       String
+  healthStatus         HealthStatus
   adoptionRequirements String
   photos               String[]
-  isDeleted            Boolean    @default(false)
-  createdAt            DateTime   @default(now())
-  updatedAt            DateTime   @updatedAt
+  isDeleted            Boolean      @default(false)
+  createdAt            DateTime     @default(now())
+  updatedAt            DateTime     @updatedAt
   adoption             Adoption[]
 
   @@map("pets")
@@ -66,4 +69,25 @@ enum AdoptionStatus {
   PENDING
   APPROVED
   REJECTED
+}
+
+enum Gender {
+  MALE
+  FEMALE
+}
+
+enum HealthStatus {
+  VACCINATED
+  NEUTERED
+}
+
+enum UserStatus {
+  ACTIVATE
+  DEACTIVATE
+}
+
+enum UserRole {
+  SUPER_ADMIN
+  ADMIN
+  USER
 }

@@ -2,15 +2,19 @@ import { Router } from "express";
 import validateRequiestHandler from "../../middlewares/validateRequiestHandler";
 import { RegisterValidations } from "./register.validation";
 import { RegisterControllers } from "./register.controllers";
-import { RegisterServices } from "./register.services";
 
 const router = Router();
 
 router.post(
-  "/",
+  "/create-user",
   validateRequiestHandler(RegisterValidations.registerValidationSchema),
-  RegisterControllers.createUser,
-  RegisterServices.createUserFromDB
+  RegisterControllers.createUser
+);
+
+router.post(
+  "/create-admin",
+  validateRequiestHandler(RegisterValidations.registerValidationSchema),
+  RegisterControllers.createAdmin
 );
 
 export const RegisterRoutes = router;

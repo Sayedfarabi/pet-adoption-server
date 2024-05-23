@@ -5,7 +5,7 @@ import { RegisterServices } from "./register.services";
 
 const createUser = catchAsyncHandler(async (req, res) => {
   const payload = req.body;
-  const result = await RegisterServices.createUserFromDB(payload);
+  const result = await RegisterServices.createUserIntoDB(payload);
 
   sendResponse(res, {
     statusCode: httpStatus.CREATED,
@@ -15,6 +15,19 @@ const createUser = catchAsyncHandler(async (req, res) => {
   });
 });
 
+const createAdmin = catchAsyncHandler(async (req, res) => {
+  const payload = req.body;
+  const result = await RegisterServices.createAdminIntoDB(payload);
+
+  sendResponse(res, {
+    statusCode: httpStatus.CREATED,
+    success: true,
+    message: "Admin registered successfully",
+    data: result,
+  });
+});
+
 export const RegisterControllers = {
   createUser,
+  createAdmin,
 };

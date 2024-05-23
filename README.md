@@ -11,10 +11,12 @@ https://pet-adoption-server-sooty.vercel.app/api
 API ROUTES:
 
 (REGISTERD MANAGEMENT):
-Create User: POST: https://pet-adoption-server-sooty.vercel.app/api/register
+Create User: POST: https://pet-adoption-server-sooty.vercel.app/api/register/create-user
+Create Admin: POST: https://pet-adoption-server-sooty.vercel.app/api/register/create-admin
 
 (AUTH MODULE):
-Login User: POST: https://pet-adoption-server-sooty.vercel.app/api/login
+Login User: POST: https://pet-adoption-server-sooty.vercel.app/api/auth/login
+Change Password: POST: https://pet-adoption-server-sooty.vercel.app/api/auth/change-password
 
 (PROFILE MODULE):
 Get Profile: GET: https://pet-adoption-server-sooty.vercel.app/api/profile
@@ -30,7 +32,8 @@ Delete Pet: DELETE: https://pet-adoption-server-sooty.vercel.app/api/pets/[petId
 Create Adoption: POST: https://pet-adoption-server-sooty.vercel.app/api/adoption-request
 
 (ADOPTION REQUESTS MODULE):
-Get Adoption: GET: https://pet-adoption-server-sooty.vercel.app/api/adoption-requests
+Get Admin Adoption: GET: https://pet-adoption-server-sooty.vercel.app/api/adoption-requests
+Get User Adoption: GET: https://pet-adoption-server-sooty.vercel.app/api/adoption-requests/user-adoptions
 Update Adoption: PUT: https://pet-adoption-server-sooty.vercel.app/api/adoption-requests/[requestId]
 
 ---

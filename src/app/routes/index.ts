@@ -18,7 +18,7 @@ const moduleRoutes = [
     route: RegisterRoutes,
   },
   {
-    path: "/login",
+    path: "/auth",
     route: AuthRoutes,
   },
   {

@@ -5,8 +5,10 @@ import httpStatus from "http-status";
 import AppError from "../errors/appError";
 import { jwtHelpers } from "../../helpers/jwtHelpers";
 import config from "../../config";
+import { UserRole, UserStatus } from "@prisma/client";
+import prisma from "../../shared/prisma";
 
-const auth = () => {
+const auth = (...requiredRoles: UserRole[]) => {
   return async (
     req: Request & { user?: any },
     res: Response,
@@ -24,9 +26,26 @@ const auth = () => {
         config.jwt_access_secret as Secret
       );
 
+      const { role, email } = verifiedUser;
+
+      const userData = await prisma.user.findUnique({
+        where: {
+          email: email,
+          status: UserStatus.ACTIVATE,
+        },
+      });
+
+      if (!userData) {
+        throw new AppError(httpStatus.NOT_FOUND, "User does not exists!");
+      }
+
+      if (requiredRoles && !requiredRoles.includes(role)) {
+        throw new AppError(httpStatus.UNAUTHORIZED, "You are not authorized!");
+      }
+
       req.user = verifiedUser;
 
-      console.log(verifiedUser);
+      // console.log(verifiedUser);
 
       if (!verifiedUser.email) {
         throw new AppError(httpStatus.FORBIDDEN, "Forbidden Token!");

@@ -3,9 +3,24 @@ import catchAsyncHandler from "../../../shared/catchAsyncHandler";
 import sendResponse from "../../../shared/sendResponse";
 import { AdoptionRequestsServices } from "./adoptionRequests.services";
 
-const getAdoptionRequests = catchAsyncHandler(async (req, res) => {
+const getAllAdoptionRequests = catchAsyncHandler(async (req, res) => {
   const user = req.user;
-  const result = await AdoptionRequestsServices.getAdoptionRequestsFromDB(user);
+  const result = await AdoptionRequestsServices.getAllAdoptionRequestsFromDB(
+    user
+  );
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: "Adoption requests retrieved successfully",
+    data: result,
+  });
+});
+
+const getUserAdoptionRequests = catchAsyncHandler(async (req, res) => {
+  const user = req.user;
+  const result = await AdoptionRequestsServices.getUserAdoptionRequestsFromDB(
+    user
+  );
   sendResponse(res, {
     success: true,
     statusCode: httpStatus.OK,
@@ -32,6 +47,7 @@ const updateAdoptionRequests = catchAsyncHandler(async (req, res) => {
 });
 
 export const AdoptionRequestsControllers = {
-  getAdoptionRequests,
+  getAllAdoptionRequests,
   updateAdoptionRequests,
+  getUserAdoptionRequests,
 };

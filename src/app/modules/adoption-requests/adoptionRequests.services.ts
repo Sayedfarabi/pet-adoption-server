@@ -1,8 +1,8 @@
 import { JwtPayload } from "jsonwebtoken";
 import prisma from "../../../shared/prisma";
-import { Adoption } from "@prisma/client";
+import { Adoption, UserStatus } from "@prisma/client";
 
-const getAdoptionRequestsFromDB = async (user: JwtPayload) => {
+const getAllAdoptionRequestsFromDB = async (user: JwtPayload) => {
   await prisma.user.findUniqueOrThrow({
     where: {
       email: user.email,
@@ -10,6 +10,22 @@ const getAdoptionRequestsFromDB = async (user: JwtPayload) => {
   });
 
   const result = await prisma.adoption.findMany();
+  return result;
+};
+
+const getUserAdoptionRequestsFromDB = async (user: JwtPayload) => {
+  const userData = await prisma.user.findUniqueOrThrow({
+    where: {
+      email: user.email,
+      status: UserStatus.ACTIVATE,
+    },
+  });
+
+  const result = await prisma.adoption.findMany({
+    where: {
+      userId: userData.id,
+    },
+  });
   return result;
 };
 
@@ -34,6 +50,7 @@ const updateAdoptionRequestsFromDB = async (
 };
 
 export const AdoptionRequestsServices = {
-  getAdoptionRequestsFromDB,
+  getAllAdoptionRequestsFromDB,
   updateAdoptionRequestsFromDB,
+  getUserAdoptionRequestsFromDB,
 };
