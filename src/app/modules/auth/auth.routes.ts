@@ -6,7 +6,7 @@ import { AuthControllers } from "./auth.controllers";
 const router = Router();
 
 router.post(
-  "/",
+  "/login",
   validateRequiestHandler(AuthValidations.loginValidationSchema),
   AuthControllers.userLogin
 );

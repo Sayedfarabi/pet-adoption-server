@@ -1,11 +1,12 @@
 import { JwtPayload } from "jsonwebtoken";
 import prisma from "../../../shared/prisma";
-import { User } from "@prisma/client";
+import { User, UserStatus } from "@prisma/client";
 
 const getProfileFromDB = async (user: JwtPayload) => {
   const result = await prisma.user.findUniqueOrThrow({
     where: {
       email: user.email,
+      status: UserStatus.ACTIVATE,
     },
     select: {
       id: true,

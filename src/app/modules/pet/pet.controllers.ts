@@ -31,6 +31,18 @@ const getPets = catchAsyncHandler(async (req, res) => {
   });
 });
 
+const getPet = catchAsyncHandler(async (req, res) => {
+  const id = req.params.petId;
+  const user = req.user;
+  const result = await PetServices.getPetFromDB(user, id);
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: "Pet retrieved successfully",
+    data: result,
+  });
+});
+
 const updatePet = catchAsyncHandler(async (req, res) => {
   const payload = req.body;
   const user = req.user;
@@ -61,6 +73,7 @@ const deletePet = catchAsyncHandler(async (req, res) => {
 export const PetControllers = {
   addPet,
   getPets,
+  getPet,
   updatePet,
   deletePet,
 };

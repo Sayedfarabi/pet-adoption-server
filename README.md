@@ -18,13 +18,17 @@ Create Admin: POST: https://pet-adoption-server-sooty.vercel.app/api/register/cr
 Login User: POST: https://pet-adoption-server-sooty.vercel.app/api/auth/login
 Change Password: POST: https://pet-adoption-server-sooty.vercel.app/api/auth/change-password
 
+(USER MODULE):
+Get Users: GET: https://pet-adoption-server-sooty.vercel.app/api/users
+
 (PROFILE MODULE):
 Get Profile: GET: https://pet-adoption-server-sooty.vercel.app/api/profile
 Update Profile: PUT: https://pet-adoption-server-sooty.vercel.app/api/profile
 
 (PET MODULE):
 Create Pet: POST: https://pet-adoption-server-sooty.vercel.app/api/pets
-Get Pet: GET: https://pet-adoption-server-sooty.vercel.app/api/pets
+Get Pets: GET: https://pet-adoption-server-sooty.vercel.app/api/pets
+Get Pet: GET: https://pet-adoption-server-sooty.vercel.app/api/pets/[petId]
 Update Pet: PUT: https://pet-adoption-server-sooty.vercel.app/api/pets/[petId]
 Delete Pet: DELETE: https://pet-adoption-server-sooty.vercel.app/api/pets/[petId]
 

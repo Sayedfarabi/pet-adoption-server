@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Pet, Prisma } from "@prisma/client";
+import { Pet, Prisma, UserStatus } from "@prisma/client";
 import { JwtPayload } from "jsonwebtoken";
 import prisma from "../../../shared/prisma";
 import { TPetsFilterRequest } from "./pet.interfaces";
@@ -86,6 +86,23 @@ const getPetsFromDB = async (
   };
 };
 
+const getPetFromDB = async (user: JwtPayload, id: string) => {
+  await prisma.user.findUniqueOrThrow({
+    where: {
+      email: user.email,
+      status: UserStatus.ACTIVATE,
+    },
+  });
+
+  const result = prisma.pet.findUnique({
+    where: {
+      id: id,
+    },
+  });
+
+  return result;
+};
+
 const updatePetIntoDB = async (
   id: string,
   payload: Partial<Pet>,
@@ -129,6 +146,7 @@ const deletePetFromDB = async (id: string, user: JwtPayload) => {
 export const PetServices = {
   addPetIntoDB,
   getPetsFromDB,
+  getPetFromDB,
   updatePetIntoDB,
   deletePetFromDB,
 };

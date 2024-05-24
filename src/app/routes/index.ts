@@ -5,6 +5,7 @@ import { PetRoutes } from "../modules/pet/pet.routes";
 import { AdoptionRequestRoutes } from "../modules/adoption-request/adoptionRequest.routes";
 import { AdoptionRequestsRoutes } from "../modules/adoption-requests/adoptionRequests.routes";
 import { ProfileRoutes } from "../modules/profile/profile.routes";
+import { UserRouter } from "../modules/user/user.routes";
 
 const routes = Router();
 
@@ -20,6 +21,10 @@ const moduleRoutes = [
   {
     path: "/auth",
     route: AuthRoutes,
+  },
+  {
+    path: "/users",
+    route: UserRouter,
   },
   {
     path: "/pets",
