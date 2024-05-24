@@ -10,6 +10,5 @@ router.get(
   auth(UserRole.ADMIN, UserRole.SUPER_ADMIN),
   UserControllers.getUsers
 );
-router.get("/me", auth(UserRole.USER, UserRole.ADMIN, UserRole.SUPER_ADMIN));
 
 export const UserRouter = router;
