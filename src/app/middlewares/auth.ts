@@ -17,6 +17,8 @@ const auth = (...requiredRoles: UserRole[]) => {
     try {
       const token = req.headers.authorization;
 
+      // console.log(requiredRoles);
+
       if (!token) {
         throw new AppError(httpStatus.UNAUTHORIZED, "Unauthorized Access");
       }
@@ -27,6 +29,8 @@ const auth = (...requiredRoles: UserRole[]) => {
       );
 
       const { role, email } = verifiedUser;
+
+      // console.log(role);
 
       const userData = await prisma.user.findUnique({
         where: {

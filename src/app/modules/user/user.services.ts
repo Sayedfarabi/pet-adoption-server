@@ -7,6 +7,14 @@ const getAllUsersFromDB = async () => {
       role: UserRole.USER,
       status: UserStatus.ACTIVATE,
     },
+    select: {
+      name: true,
+      email: true,
+      role: true,
+      status: true,
+      createdAt: true,
+      updatedAt: true,
+    },
   });
   return result;
 };

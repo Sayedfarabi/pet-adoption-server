@@ -44,8 +44,6 @@ const createUserIntoDB = async (payload: User) => {
   return result;
 };
 const createAdminIntoDB = async (payload: User) => {
-  console.log(payload);
-
   const isExistsUser = await prisma.user.findUnique({
     where: {
       email: payload.email,
@@ -65,7 +63,7 @@ const createAdminIntoDB = async (payload: User) => {
     name: payload.name,
     email: payload.email,
     password: hashedPassword,
-    role: UserRole.USER,
+    role: UserRole.ADMIN,
   };
 
   const result = await prisma.user.create({

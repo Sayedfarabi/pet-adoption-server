@@ -28,6 +28,7 @@ const userLoginIntoDB = async (payload: {
     {
       email: userData.email,
       name: userData.name,
+      role: userData.role,
     },
     config.jwt_access_secret as string,
     config.jwt_access_expires_in as string

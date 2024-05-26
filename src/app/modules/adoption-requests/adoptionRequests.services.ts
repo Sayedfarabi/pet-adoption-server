@@ -9,7 +9,19 @@ const getAllAdoptionRequestsFromDB = async (user: JwtPayload) => {
     },
   });
 
-  const result = await prisma.adoption.findMany();
+  const result = await prisma.adoption.findMany({
+    include: {
+      user: {
+        select: {
+          name: true,
+          email: true,
+          role: true,
+          status: true,
+        },
+      },
+      pet: true,
+    },
+  });
   return result;
 };
 

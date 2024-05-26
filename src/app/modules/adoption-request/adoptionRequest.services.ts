@@ -12,6 +12,15 @@ const createAdoptionRequestIntoDB = async (
     },
   });
 
+  const { petId } = payload;
+
+  await prisma.pet.findUniqueOrThrow({
+    where: {
+      id: petId,
+      isDeleted: false,
+    },
+  });
+
   const adoptionData = {
     ...payload,
     userId: userData.id,
